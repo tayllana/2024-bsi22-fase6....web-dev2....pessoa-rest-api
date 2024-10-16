@@ -30,6 +30,11 @@ document.addEventListener('submit', async (event) => {
   }
   
   if (action === 'update') {
+    debugger
+    if (currentForm.password.value !== currentForm.confirmPassword.value){
+      alert('As senhas não coincidem!')
+      return console.error('Error: Passwords do not match')
+    }
     const id = currentForm.dataset.id
     const method = 'PUT'
     const url = `/users/${id}`
@@ -45,6 +50,10 @@ document.addEventListener('submit', async (event) => {
   }
   
   if (action === 'create') {
+    if (currentForm.password.value !== currentForm.confirmPassword.value){
+      alert('As senhas não coincidem!')
+      return console.error('Error: Passwords do not match')
+    }
     const method = 'POST'
     const url = '/users'
     const headers = { 'Content-Type': 'application/json' }
